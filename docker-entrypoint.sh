@@ -14,9 +14,9 @@ fi
 rm -f $TEAMCITY_DATA_PATH/config/database.properties
 
 cat > $TEAMCITY_DATA_PATH/config/database.properties <<- EOF
-connectionUrl=jdbc:postgresql://$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB
-connectionProperties.user=$POSTGRES_USER
-connectionProperties.password=$POSTGRES_PASSWORD
+connectionUrl=jdbc:postgresql://$DB_HOST:$DB_PORT/$DB_NAME
+connectionProperties.user=$DB_USER
+connectionProperties.password=$DB_PASSWORD
 EOF
 
 echo "Starting teamcity..."
