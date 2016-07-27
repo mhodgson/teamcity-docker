@@ -10,6 +10,14 @@ then
     rm -f $TEAMCITY_DATA_PATH/lib/jdbc/postgresql-9.3-1103.jdbc41.jar
 fi
 
+# Configure Postgres
+rm -f $TEAMCITY_DATA_PATH/config/database.properties
+
+cat > $TEAMCITY_DATA_PATH/config/database.properties <<- EOF
+connectionUrl=jdbc:postgresql://$POSTGRES_HOST:$POSTGRES_PORT/$POSTGRES_DB
+connectionProperties.user=$POSTGRES_USER
+connectionProperties.password=$POSTGRES_PASSWORD
+EOF
 
 echo "Starting teamcity..."
 exec /opt/TeamCity/bin/teamcity-server.sh run
